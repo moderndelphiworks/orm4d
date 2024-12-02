@@ -109,7 +109,8 @@ uses
   ormbr.bind,
   ormbr.session.abstract,
   ormbr.objects.helper,
-  ormbr.rtti.helper;
+  ormbr.rtti.helper,
+  ormbr.core.consts;
 
 { TObjectManager<M> }
 
@@ -121,7 +122,7 @@ begin
   FPageSize := APageSize;
   if not (AOwner is TSessionAbstract<M>) then
     raise Exception
-            .Create('O Object Manager não deve ser instânciada diretamente, use as classes TSessionObject<M> ou TSessionDataSet<M>');
+            .Create(SObjectManagerNotDirectCreate);
   FConnection := AConnection;
 
   FObjectInternal := M.Create;

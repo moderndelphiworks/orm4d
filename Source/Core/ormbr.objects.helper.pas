@@ -65,7 +65,8 @@ type
   end;
 
 implementation
-
+uses
+  ormbr.core.consts;
 { TObjectHelper }
 
 function TObjectHelper.GetNotServerUse: NotServerUse;
@@ -185,7 +186,7 @@ begin
     if Assigned(LMethod) then
        Result := LMethod.Invoke(Self, AParameters)
     else
-       raise Exception.CreateFmt('Cannot find method "%s" in the object', [AMethodName]);
+       raise Exception.CreateFmt(SCannotFindMetod, [AMethodName]);
   finally
     LContext.Free;
   end;

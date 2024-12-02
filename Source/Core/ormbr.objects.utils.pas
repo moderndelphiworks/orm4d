@@ -81,7 +81,8 @@ implementation
 uses
   dbcbr.mapping.explorer,
   dbcbr.rtti.helper,
-  ormbr.objects.helper;
+  ormbr.objects.helper,
+  ormbr.core.consts;
 
 function RttiSingleton: IRttiSingleton;
 begin
@@ -286,7 +287,7 @@ begin
   if Assigned(metaClass) then
     Result := Method.Invoke(metaClass, []).AsObject
   else
-    raise Exception.Create('Cannot find a propert constructor for ' + ARttiType.ToString);
+    raise Exception.Create(SCannotFindConstructor + ARttiType.ToString);
 end;
 
 function TRttiSingleton.GetRttiType(AClass: TClass): TRttiType;

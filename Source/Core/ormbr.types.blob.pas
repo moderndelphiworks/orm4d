@@ -95,6 +95,8 @@ type
 
 implementation
 
+uses
+  ormbr.core.consts;
 const
   MinGraphicSize = 44;
 
@@ -109,7 +111,7 @@ begin
     BuildBlobFieldToStream(ACompression);
   end
   else
-    raise Exception.Create(Format('Column [%s] must have blob value', [Value.FieldName]));
+    raise Exception.Create(Format(SColumnMustHaveBlobValue, [Value.FieldName]));
 end;
 
 procedure TBlob.SetBytes(const Value: TBytes);
@@ -198,7 +200,7 @@ begin
       try
         DecompressStream(LSourceStream, LTargetStream);
         if not FindGraphicClass(LTargetStream.Memory^, LTargetStream.Size, LGraphicClass) then
-          raise EInvalidGraphic.Create('Invalid image');
+          raise EInvalidGraphic.Create(SInvalidImage);
         LGraphic := LGraphicClass.Create;
         LTargetStream.Position := 0;
         LGraphic.LoadFromStream(LTargetStream);
@@ -209,7 +211,7 @@ begin
     else
     begin
       if not FindGraphicClass(LSourceStream.Memory^, LSourceStream.Size, LGraphicClass) then
-        raise EInvalidGraphic.Create('Invalid image');
+        raise EInvalidGraphic.Create(SInvalidImage);
       LGraphic := LGraphicClass.Create;
       LSourceStream.Position := 0;
       LGraphic.LoadFromStream(LSourceStream);

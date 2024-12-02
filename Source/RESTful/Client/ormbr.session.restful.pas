@@ -90,6 +90,7 @@ implementation
 uses
   ormbr.json,
   ormbr.core.consts,
+  ormbr.client.consts,
   ormbr.objects.utils,
   ormbr.objects.helper,
   dbcbr.mapping.classes,
@@ -217,10 +218,10 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'ID     : ' + IntToStr(AID) + sLineBreak +
-                                         'Método : DELETE' + sLineBreak +
-                                         'Result : ' + LResult, nil);
+      FConnection.CommandMonitor.Command(SUrl    + LURL + sLineBreak +
+                                         SId     + IntToStr(AID) + sLineBreak +
+                                         SMetod  + 'DELETE' + sLineBreak +
+                                         SResult + LResult, nil);
     end;
   end;
 end;
@@ -270,11 +271,11 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Where  : ' + AWhere + sLineBreak +
-                                         'OrderBy: ' + AOrderBy + sLineBreak +
-                                         'Método : GET' + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl     + LURL + sLineBreak +
+                                         SWhere   + AWhere + sLineBreak +
+                                         SOrderBy + AOrderBy + sLineBreak +
+                                         SMetod   + 'GET' + sLineBreak +
+                                         SJson    + LJSON, nil);
     end;
   end;
 end;
@@ -320,10 +321,10 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'ID     : ' + AID  + sLineBreak +
-                                         'Método : GET' + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl   + LURL + sLineBreak +
+                                         SId    + AID  + sLineBreak +
+                                         SMetod + 'GET' + sLineBreak +
+                                         SJson  + LJSON, nil);
     end;
   end;
 end;
@@ -358,9 +359,9 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Método : GET' + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl   + LURL + sLineBreak +
+                                         SMetod + 'GET' + sLineBreak +
+                                         SJson  + LJSON, nil);
     end;
   end;
 end;
@@ -417,10 +418,10 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Método : POST' + sLineBreak +
-                                         'Result : ' + LResult + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl    + LURL + sLineBreak +
+                                         SMetod  + 'POST' + sLineBreak +
+                                         SResult + LResult + sLineBreak +
+                                         SJson   + LJSON, nil);
     end;
   end;
 end;
@@ -497,9 +498,9 @@ begin
       if Length(LSubResource) > 0 then
         LURL := LURL + '/' + LSubResource;
 
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Método : GET' + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl   + LURL + sLineBreak +
+                                         SMetod + 'GET' + sLineBreak +
+                                         SJson  + LJSON, nil);
     end;
   end;
 end;
@@ -534,9 +535,9 @@ begin
         LURL := LURL + '/' + LSubResource;
 
       // Gera Lentidão se tiver campo TBlob no JSON
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Método : GET' + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl   + LURL + sLineBreak +
+                                         SMetod + 'GET' + sLineBreak +
+                                         SJson  + LJSON, nil);
     end;
   end;
 end;
@@ -570,10 +571,10 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Método : PUT' + sLineBreak +
-                                         'Result : ' + LResult + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl + LURL + sLineBreak +
+                                         SMetod  + 'PUT' + sLineBreak +
+                                         SResult + LResult + sLineBreak +
+                                         SJson   + LJSON, nil);
     end;
   end;
 end;
@@ -651,9 +652,9 @@ begin
     if FConnection.CommandMonitor <> nil then
     begin
       LURL := FConnection.FullURL;
-      FConnection.CommandMonitor.Command('URI    : ' + LURL + sLineBreak +
-                                         'Método : GET' + sLineBreak +
-                                         'Json   : ' + LJSON, nil);
+      FConnection.CommandMonitor.Command(SUrl   + LURL + sLineBreak +
+                                         SMetod + 'GET' + sLineBreak +
+                                         SJson  + LJSON, nil);
     end;
   end;
 end;

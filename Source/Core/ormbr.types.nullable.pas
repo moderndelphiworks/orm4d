@@ -76,6 +76,9 @@ type
 
 implementation
 
+uses
+  ormbr.core.consts;
+
 const
   CHasValueFlag = '@';
 
@@ -190,7 +193,7 @@ begin
   if not Assigned(Value) then
     Result.Clear
   else
-    raise Exception.Create('Cannot assigned non-null pointer to nullable type.');
+    raise Exception.Create(SCannotAssign);
 end;
 
 class operator Nullable<T>.Equal(const a, b: Nullable<T>): Boolean;

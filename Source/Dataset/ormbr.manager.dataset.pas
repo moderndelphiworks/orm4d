@@ -117,6 +117,8 @@ type
   end;
 
 implementation
+uses
+  ormbr.dataset.consts;
 
 { TManagerDataSet }
 
@@ -168,7 +170,7 @@ begin
   if AID.IsType<String> then
     Result := Resolver<T>.Find(AID.ToString)
   else
-    raise Exception.Create('Invalid parameter type');
+    raise Exception.Create(Invalid parameter type');
 end;
 
 function TManagerDataSet.Find<T>: TObjectList<T>;
@@ -356,14 +358,14 @@ procedure TManagerDataSet.ResolverDataSetType(const ADataSet: TDataSet);
 begin
   {$IFDEF USEFDMEMTABLE}
     if not (ADataSet is TFDMemTable) then
-      raise Exception.Create('Is not TFDMemTable type');
+      raise Exception.Create( SIsNotFDMemTableType);
   {$ENDIF}
   {$IFDEF USECLIENTDATASET}
     if not (ADataSet is TClientDataSet) then
-      raise Exception.Create('Is not TClientDataSet type');
+      raise Exception.Create(SIsNotClientDatasetType);
   {$ENDIF}
   {$IFNDEF USEMEMDATASET}
-    raise Exception.Create('Enable the directive "USEFDMEMTABLE" or "USECLIENTDATASET" in file ormbr.inc');
+    raise Exception.Create(SEnableDirective + '"USEFDMEMTABLE" | "USECLIENTDATASET"');
   {$ENDIF}
 end;
 

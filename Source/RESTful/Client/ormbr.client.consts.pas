@@ -29,6 +29,8 @@ unit ormbr.client.consts;
 
 interface
 
+{$INCLUDE ..\..\ormbr.inc}
+
 const
   cORMBRSOBRETITULOCLIENT = 'ORMBr - REST Client Components';
   cORMBRVERSIONCLIENT = '1.2';
@@ -38,6 +40,57 @@ const
                                'Version : ' + cORMBRVERSIONCLIENT + '.' + cORMBRRELEASECLIENT;
   cORMBRSOBRELICENCACLIENT = 'Registered';
 
+resourcestring
+{$IFDEF CBLIB_BR}
+  SParamInsertWasNotPassed = 'Nгo foi passado o parвmetro com os dados do insert!';
+  SResource =    'Resource : ';
+  SSubresource = 'SubResource : ';
+  SMessage =     'Message : ';
+  SStatusCode = 'Status Code : ';
+  SCouldNotFindInfo = 'Nгo foi possнvel encontrar a informaзгo ';
+  SUrl =     'URL    : ';
+  SMetod =   'Method : ';
+  SResult =  'Result : ';
+  SId =      'ID     : ';
+  SError =   'Error  : ';
+  SJSon =    'Json   : ';
+  SWhere =   'Where  : ';
+  SOrderBy = 'OrderBy: ';
+{$ENDIF}
+
+{$IFDEF CBLIB_EN}
+  SParamInsertWasNotPassed = 'The parameter with the insert data was not passed!';
+  SResource =     'Resource : ';
+  SSubresource =  'SubResource : ';
+  SMessage =      'Message  : ';
+  SStatusCode = 'Status Code : ';
+  SCouldNotFindInfo = 'Could not find information';
+  SUrl =    'URL : ';
+  SMetod =  'Method : ';
+  SResult = 'Result : ';
+  SId =     'ID     : ';
+  SError =  'Error  : ';
+  SJSon =   'Json   : ';
+  SWhere =  'Where  : ';
+  SOrderBy = 'OrderBy: ';
+{$ENDIF}
+
+{$IFDEF CBLIB_RU}
+  SParamInsertWasNotPassed = 'The parameter with the insert data was not passed!';
+  SResource =    'Resource : ';
+  SSubresource = 'SubResource : ';
+  SMessage =     'Сообщение : ';
+  SStatusCode = 'Status Code : ';
+  SCouldNotFindInfo = 'Невозможно найти информацию ';
+  SUrl =    'URL : ';
+  SMetod =  'Method : ';
+  SResult = 'Result : ';
+  SId =     'ID     : ';
+  SError =  'Oшибка : ';
+  SJSon =   'Json   : ';
+  SWhere =  'Where  : ';
+  SOrderBy = 'OrderBy: ';
+{$ENDIF}
 implementation
 
 end.

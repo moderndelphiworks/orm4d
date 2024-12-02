@@ -76,7 +76,8 @@ type
 implementation
 
 uses
-  ormbr.client.restmars.factory;
+  ormbr.client.restmars.factory,
+  ormbr.client.consts;
 
 { TRESTClientMARS }
 
@@ -442,7 +443,7 @@ var
   LFor: Integer;
 begin
   if FBodyParams.Count = 0 then
-    raise Exception.Create('Não foi passado o parâmetro com os dados do insert!');
+    raise Exception.Create(SParamInsertWasNotPassed);
 
   for LFor := 0 to FBodyParams.Count -1 do
     AParams := AParams + FBodyParams.Items[LFor].AsString;
