@@ -74,7 +74,8 @@ type
 implementation
 
 uses
-  ormbr.client.restws.factory;
+  ormbr.client.restws.factory,
+  ormbr.client.consts;
 
 { TRESTClientWS }
 
@@ -377,7 +378,7 @@ var
   LFor: Integer;
 begin
   if FBodyParams.Count = 0 then
-    raise Exception.Create('Não foi passado o parâmetro com os dados do insert!');
+    raise Exception.Create(SParamInsertWasNotPassed);
 
   for LFor := 0 to FBodyParams.Count -1 do
     FRESTRequest.Body.Add(FBodyParams.Items[LFor].AsString, ContentTypeFromString('application/json'));

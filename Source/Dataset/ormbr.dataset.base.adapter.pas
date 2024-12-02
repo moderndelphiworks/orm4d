@@ -350,7 +350,7 @@ begin
   LPropertyType := AProperty.GetTypeValue(LPropertyType);
   if not LPropertyType.IsInstance then
     raise Exception
-            .Create('Not in instance ' + LPropertyType.Parent.ClassName + ' - '
+            .Create(SNotInInstance + LPropertyType.Parent.ClassName + ' - '
                                        + LPropertyType.Name);
   //
   if ADatasetBase.FCurrentInternal.ClassType <>

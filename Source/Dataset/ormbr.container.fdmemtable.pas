@@ -54,6 +54,8 @@ type
   end;
 
 implementation
+uses
+  ormbr.dataset.consts;
 
 { TContainerFDMemTable }
 
@@ -61,7 +63,7 @@ constructor TContainerFDMemTable<M>.Create(AConnection: IDBConnection;
   ADataSet: TDataSet; APageSize: Integer; AMasterObject: TObject);
 begin
   if not (ADataSet is TFDMemTable) then
-    raise Exception.Create('Is not TFDMemTable type');
+    raise Exception.Create(SIsNotFDMemTableType);
 
   FDataSetAdapter := TFDMemTableAdapter<M>.Create(AConnection, ADataSet, APageSize, AMasterObject)
 end;

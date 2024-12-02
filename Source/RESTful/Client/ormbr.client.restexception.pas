@@ -43,6 +43,8 @@ type
   end;
 
 implementation
+uses
+  ormbr.client.consts;
 
 { EORMBrRESTException }
 
@@ -51,13 +53,13 @@ constructor EORMBrRESTException.Create(const AURL, AResource, ASubResource,
 var
   LMessage: String;
 begin
-  LMessage := 'URL : '         + AURL          + sLineBreak +
-              'Resource : '    + AResource     + sLineBreak +
-              'SubResource : ' + ASubResource  + sLineBreak +
-              'Method : '      + AMethodType   + sLineBreak +
-              'Message : '     + AMessage      + sLineBreak +
-              'Error : '       + AMessageError + sLineBreak +
-              'Status Code : ' + IntToStr(AStatusCode);
+  LMessage := SUrl             + AURL          + sLineBreak +
+              SResource        + AResource     + sLineBreak +
+              SSubResource     + ASubResource  + sLineBreak +
+              SMetod           + AMethodType   + sLineBreak +
+              SMessage         + AMessage      + sLineBreak +
+              SError           + AMessageError + sLineBreak +
+              SStatusCode      + IntToStr(AStatusCode);
   inherited Create(LMessage);
 end;
 

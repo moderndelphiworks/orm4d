@@ -86,7 +86,8 @@ uses
   ormbr.objects.helper,
   ormbr.rtti.helper,
   dbcbr.mapping.explorer,
-  dbcbr.mapping.attributes;
+  dbcbr.mapping.attributes,
+  ormbr.client.consts;
 
 { TRESTDataSetAdapter<M> }
 
@@ -448,7 +449,7 @@ begin
     LObjectFind.OwnsObjects := True;
     try
       if LObjectFind.Count = 0 then
-        raise Exception.Create('Não foi possível encontrar a informação ' + LKeyFieldName + '=' + LKeyValue);
+        raise Exception.Create(SCouldNotFindInfo + LKeyFieldName + '=' + LKeyValue);
       LDataSetChild.FOrmDataSet.DisableControls;
       LDataSetChild.DisableDataSetEvents;
       LDataSetChild.FOrmDataSet.Append;

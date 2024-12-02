@@ -28,6 +28,8 @@ unit ormbr.core.consts;
 
 interface
 
+{$INCLUDE ..\ormbr.inc}
+
 uses
   TypInfo;
 
@@ -48,7 +50,51 @@ const
                       tkPointer,
                       tkProcedure];
 
+resourcestring
+{$IFDEF CBLIB_BR}
+  SColumn = 'Column : ';
+  SProblemBindingColumn = 'Problem when binding column "';
+  SProblemBinding = 'Problem when binding [%s->%s] (message: %s)';
+  SColumnMustHaveBlobValue = 'Column [%s] must have blob value';
+  SObjectManagerNotDirectCreate = 'O Object Manager nгo deve ser instвnciada diretamente, use as classes TSessionObject<M> ou TSessionDataSet<M>';
+  SDriver = 'O Driver ';
+  SDNotRegister = ' nгo estб registrado, adicione a unit "ormbr.dml.generator.???.pas" onde ??? nome do driver, na clбusula USES do seu projeto!';
+  SPropertyError = 'Erro no SetValue() da propriedade ';
+  SCannotFindMetod = 'Cannot find method "%s" in the object';
+  SCannotFindConstructor = 'Cannot find a property constructor for ';
+  SInvalidImage = 'Invalid image';
+  SCannotAssign = 'Cannot assigned non-null pointer to nullable type.';
+{$ENDIF}
 
+{$IFDEF CBLIB_EN}
+  SColumn = 'Column : ';
+  SProblemBindingColumn = 'Problem when binding column "';
+  SProblemBinding = 'Problem when binding [%s->%s] (message: %s)';
+  SColumnMustHaveBlobValue = 'Column [%s] must have blob value';
+  SObjectManagerNotDirectCreate = 'The Object Manager must not be instantiated directly, use the classes TSessionObject<M> or TSessionDataSet<M>';
+  SDriver = 'The Driver ';
+  SDNotRegister = ' is not registered, add the unit "ormbr.dml.generator.???.pas" where ??? driver name, in the USES clause of your project!';
+  SPropertyError = 'Error in SetValue() of property ';
+  SCannotFindMetod = 'Cannot find method "%s" in the object';
+  SCannotFindConstructor = 'Cannot find a property constructor for ';
+  SInvalidImage = 'Invalid image';
+  SCannotAssign = 'Cannot assigned non-null pointer to nullable type.';
+{$ENDIF}
+
+{$IFDEF CBLIB_RU}
+  SColumn = 'Столбец : ';
+  SProblemBindingColumn = 'Проблема при привязке столбца "';
+  SProblemBinding = 'Проблема при привязке [%s->%s] (Сообщение: %s)';
+  SColumnMustHaveBlobValue = 'Столбец [%s] должен иметь значение blob';
+  SObjectManagerNotDirectCreate = 'Диспетчер объектов не должен создаваться напрямую, используйте классы TSessionObject<M> или TSessionDataSet<M>';
+  SDriver = 'Драйвер ';
+  SDNotRegister = ' не зарегистрирован, добавьте модуль "ormbr.dml.generator.???.pas" где ??? имя драйвера в разделе USES вашего проекта!';
+  SPropertyError = 'Ошибка в свойстве SetValue() ';
+  SCannotFindMetod = 'Cannot find method "%s" in the object';
+  SCannotFindConstructor = 'Невозможно найти конструктор свойств для ';
+  SInvalidImage = 'Недопустимое изображение';
+  SCannotAssign = 'Невозможно присвоить ненулевой указатель nullable типу.';
+{$ENDIF}
 implementation
 
 end.

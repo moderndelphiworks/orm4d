@@ -100,6 +100,8 @@ type
   end;
 
 implementation
+uses
+  ormbr.dataset.consts;
 
 procedure TFieldSingleton.AddField(const ADataSet: TDataSet;
   const AFieldName: String;
@@ -252,7 +254,7 @@ var
   LField: TField;
 begin
   if (ADataSet.FindField(AFieldName) <> nil) then
-    raise Exception.Create('O Campo calculado : ' + AFieldName + ' já existe');
+    raise Exception.Create(SCalculatedField + AFieldName + SExists);
 
   LField := GetFieldType(ADataSet, AFieldType);
   if LField = nil then
@@ -281,7 +283,7 @@ var
   LField: TAggregateField;
 begin
   if ADataSet.FindField(AFieldName) <> nil then
-     raise Exception.Create('O Campo agregado de nome : ' + AFieldName + ' já existe');
+     raise Exception.Create(SAggregatedField + AFieldName + SExists);
 
   LField := TAggregateField.Create(ADataSet);
   if LField = nil then

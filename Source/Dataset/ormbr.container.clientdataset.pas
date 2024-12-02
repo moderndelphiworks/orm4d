@@ -52,6 +52,8 @@ type
   end;
 
 implementation
+uses
+  ormbr.dataset.consts;
 
 { TContainerClientDataSet }
 
@@ -59,7 +61,7 @@ constructor TContainerClientDataSet<M>.Create(AConnection: IDBConnection;
   ADataSet: TDataSet; APageSize: Integer; AMasterObject: TObject);
 begin
   if not (ADataSet is TClientDataSet) then
-    raise Exception.Create('Is not TClientDataSet type');
+    raise Exception.Create(SIsNotClientDatasetType);
 
   FDataSetAdapter := TClientDataSetAdapter<M>.Create(AConnection, ADataSet, APageSize, AMasterObject)
 end;

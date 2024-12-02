@@ -32,6 +32,7 @@ uses
   SysUtils,
   Generics.Collections,
   ormbr.dml.interfaces,
+  ormbr.core.consts,
   dbebr.factory.interfaces;
 
 type
@@ -65,7 +66,7 @@ class function TDriverRegister.GetDriver(const ADriverName: TDriverName): IDMLGe
 begin
   if not FDriver.ContainsKey(ADriverName) then
     raise Exception
-            .Create('O driver ' + TStrDriverName[ADriverName] + ' não está registrado, adicione a unit "ormbr.dml.generator.???.pas" onde ??? nome do driver, na cláusula USES do seu projeto!');
+            .Create(SDriver + TStrDriverName[ADriverName] + SDNotRegister);
 
   Result := FDriver[ADriverName];
 end;

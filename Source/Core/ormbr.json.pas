@@ -94,7 +94,8 @@ type
 implementation
 
 uses
-  ormbr.rtti.helper;
+  ormbr.rtti.helper,
+  ormbr.core.consts;
 
 { TJson }
 
@@ -172,7 +173,7 @@ begin
     end;
   except
     on E: Exception do
-      raise Exception.Create('Erro no SetValue() da propriedade [' + AProperty.Name + ']' + sLineBreak + E.Message);
+      raise Exception.Create(SPropertyError + '[' + AProperty.Name + ']' + sLineBreak + E.Message);
   end;
 end;
 
@@ -228,7 +229,7 @@ begin
       end;
     except
       on E: Exception do
-        raise Exception.Create('Erro no SetValue() da propriedade [' + AProperty.Name + ']' + sLineBreak + E.Message);
+        raise Exception.Create(SPropertyError + '[' + AProperty.Name + ']' + sLineBreak + E.Message);
     end;
   end;
 end;

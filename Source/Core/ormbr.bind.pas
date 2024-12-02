@@ -242,7 +242,7 @@ begin
         end;
       except
         on E: Exception do
-          raise Exception.Create('Column : ' + LColumn.ColumnName
+          raise Exception.Create(SColumn + LColumn.ColumnName
                                              + sLineBreak
                                              + E.Message);
       end;
@@ -494,7 +494,7 @@ begin
       raise Exception.Create('ormbr.bind->SetDataDictionary()'
                             + sLineBreak
                             + sLineBreak
-                            + 'Column: ' + LFieldName);
+                            + SColumn + LFieldName);
     end;
   end;
 end;
@@ -707,7 +707,7 @@ begin
       _SetFieldToProperty(ADataSet.GetField(LColumn.ColumnName), LColumn, AObject);
     except
       on E: Exception do
-        raise Exception.Create('Problem when binding column "' +
+        raise Exception.Create(SProblemBindingColumn +
                                LColumn.ColumnName + '" - ' + E.Message);
     end;
   end;
@@ -788,7 +788,7 @@ begin
       _SetFieldToProperty(ADataSet.FieldByName(LColumn.ColumnName), LColumn, AObject);
     except
       on E: Exception do
-        raise Exception.CreateFmt('Problem when binding [%s->%s] (message: %s)',
+        raise Exception.CreateFmt(SProblemBinding,
                                   [ADataSet.Name, LColumn.ColumnName, E.Message]);
     end;
   end;
@@ -858,7 +858,7 @@ begin
       end;
     end
     else
-      raise Exception.CreateFmt('Column [%s] must have blob value', [AColumn.ColumnName]);
+      raise Exception.CreateFmt(SColumnMustHaveBlobValue, [AColumn.ColumnName]);
   end
   else
     LProperty.SetValueNullable(AObject, LProperty.PropertyType.Handle, AField.Value, False);
